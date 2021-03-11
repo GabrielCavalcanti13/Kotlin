@@ -17,6 +17,16 @@ class MainActivity : AppCompatActivity() {
         rvTodoItens.adapter = todoAdapter
         rvTodoItens.layoutManager = LinearLayoutManager(this)
 
-        btnAddTodo.setOnClickListener {  }
+        btnAddTodo.setOnClickListener {
+            val todoTitle = etTodoTitle.text.toString()
+            if(todoTitle.isNotEmpty()){
+                val todo = Todo(todoTitle)
+                todoAdapter.addTodo(todo)
+                etTodoTitle.text.clear()
+            }
+        }
+        btnDeleteDoneTodos.setOnClickListener {
+            todoAdapter.deleteDoneTodos()
+        }
     }
 }
